@@ -1,0 +1,65 @@
+@baseUrl = http://localhost:4000/api/v1
+@contentType = application/json
+
+### List all users
+GET {{baseUrl}}/users
+Accept: {{contentType}}
+
+### Get a specific user
+@userId = 66c35f62faff08aab458952e
+GET {{baseUrl}}/users/{{userId}}
+Accept: {{contentType}}
+
+### Create a new user
+POST {{baseUrl}}/users
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 38
+  }
+}
+
+### Update a user
+PATCH {{baseUrl}}/users/{{userId}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "name": "John s Updated Doe",
+    "age": 84
+  }
+}
+
+### Delete a user
+DELETE {{baseUrl}}/users/{{userId}}
+
+
+
+
+
+##-----------------
+
+
+### Get messages for a user
+@userId = 64a1b2c3d4e5f6g7h8i9j0k1
+GET {{baseUrl}}/messages/{{userId}}
+Accept: {{contentType}}
+
+### Create a new message
+POST {{baseUrl}}/messages
+Content-Type: {{contentType}}
+
+{
+  "message": {
+    "sender_id": "64a1b2c3d4e5f6g7h8i9j0k1",
+    "receiver_id": "64a1b2c3d4e5f6g7h8i9j0k2",
+    "content": "Hello, how are you? I"
+  }
+}
+
+### Get user's conversations
+GET {{baseUrl}}/users/{{userId}}/conversations
+Accept: {{contentType}}
